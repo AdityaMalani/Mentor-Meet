@@ -11,18 +11,18 @@
   </nav>
   <h2 class="mb-3">
     {{ quiz.name }}
-    <a href="{% url 'teachers:quiz_results' quiz.pk %}" class="btn btn-primary float-right">View results</a>
+   <!--  <a href="{% url 'teachers:quiz_results' quiz.pk %}" class="btn btn-primary float-right">View results</a> -->
   </h2>
   <div class="row mb-3">
     <div class="col-md-6 col-sm-8 col-12">
       <form method="post" novalidate>
         {% csrf_token %}
-        <div id="div_id_name" class="form-group"> <label for="id_name" class="form-control-label  requiredField">
+        <!-- <div id="div_id_name" class="form-group"> <label for="id_name" class="form-control-label  requiredField">
                 Name<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="name" maxlength="255" class="textinput textInput form-control" required="" id="id_name"> </div> </div>
         <div id="div_id_subject" class="form-group"> <label for="id_subject" class="form-control-label  requiredField">
                 Batch<span class="asteriskField">*</span> </label> <div class=""> <select name="subject" class="select form-control" required="" id="id_subject"> <option value="" selected="">---------</option> <option value="1">A</option> <option value="2">B</option> <option value="3">C</option> <option value="4">D</option> <option value="5">E</option>
 
-</select> </div> </div>
+</select> </div> </div> -->
         <button type="submit" class="btn btn-success">Save changes</button>
         <a href="{% url 'teachers:quiz_change_list' %}" class="btn btn-outline-secondary" role="button">Nevermind</a>
         <a href="{% url 'teachers:quiz_delete' quiz.pk %}" class="btn btn-danger float-right">Delete</a>
@@ -45,9 +45,9 @@
             <div class="col-10">
               <a href="{% url 'teachers:question_change' quiz.pk question.pk %}">{{ question.text }}</a>
             </div>
-            <div class="col-2">
+           <!--  <div class="col-2">
               {{ question.answers_count }}
-            </div>
+            </div> -->
           </div>
         </div>
       {% empty %}

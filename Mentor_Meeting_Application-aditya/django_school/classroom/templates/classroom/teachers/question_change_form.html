@@ -13,8 +13,8 @@
   <h2 class="mb-3">{{ question.txt }}</h2>
   <form method="post" novalidate>
     {% csrf_token %}
-    <div id="div_id_text" class="form-group"> <label for="id_text" class="form-control-label  requiredField">
-                Message<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="text" value="hi" maxlength="255" class="textinput textInput form-control" required="" id="id_text"> </div> </div>
+    <!-- <div id="div_id_text" class="form-group"> <label for="id_text" class="form-control-label  requiredField">
+                Message<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="text" value="hi" maxlength="255" class="textinput textInput form-control" required="" id="id_text"> </div> </div> -->
     {{ formset.management_form }}
     <!-- {{ form|crispy }}
     <div class="card mb-3{% if formset.errors %} border-danger{% endif %}">
