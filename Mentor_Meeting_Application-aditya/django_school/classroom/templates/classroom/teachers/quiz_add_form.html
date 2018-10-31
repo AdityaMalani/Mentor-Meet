@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'teachers:quiz_change_list' %}">My Schedule</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add meeting</li>
+    </ol>
+  </nav>
+  <h2 class="mb-3">Add meeting</h2>
+  <div class="row">
+    <div class="col-md-6 col-sm-8 col-12">
+      <form method="post" novalidate>
+        {% csrf_token %}
+        <div id="div_id_name" class="form-group"> <label for="id_name" class="form-control-label  requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="name" maxlength="255" class="textinput textInput form-control" required="" id="id_name"> </div> </div>
+        <div id="div_id_subject" class="form-group"> <label for="id_subject" class="form-control-label  requiredField">
+                Batch<span class="asteriskField">*</span> </label> <div class=""> <select name="subject" class="select form-control" required="" id="id_subject"> <option value="" selected="">---------</option> <option value="1">A</option> <option value="2">B</option> <option value="3">C</option> <option value="4">D</option> <option value="5">E</option>
+
+</select> </div> </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'teachers:quiz_change_list' %}" class="btn btn-outline-secondary" role="button">Nevermind</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
