@@ -10,7 +10,9 @@
   <p class="lead">{{ question.text }}</p>
   <form method="post" novalidate>
     {% csrf_token %}
-    {{ form|crispy }}
+    <!-- {{ form|crispy }} -->
+    <div id="div_id_answer" class="form-group has-danger"> <label for="id_answer_0" class="form-control-label  requiredField">
+                 </label> <div class="">  </div> </div>
     <button type="submit" class="btn btn-primary">Next →</button>
   </form>
 {% endblock %}
