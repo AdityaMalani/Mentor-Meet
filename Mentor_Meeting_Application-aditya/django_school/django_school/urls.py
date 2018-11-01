@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/signup/', classroom.SignUpView.as_view(), name='signup'),
     path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),
     path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
+    path('accounts/signup/head/', teachers.HeadSignUpView.as_view(), name='head_signup'),
     path('quiz/reportadd/<str:pk>/',teachers.Addreport,name='add_report'),
     path('quiz/reportadded/<str:pk>',teachers.reportadded,name='report_added'),
 ]

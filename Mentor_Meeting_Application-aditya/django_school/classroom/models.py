@@ -6,6 +6,7 @@ from django.utils.html import escape, mark_safe
 class User(AbstractUser):
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
+    is_head = models.BooleanField(default=False)
 
 
 class Subject(models.Model):

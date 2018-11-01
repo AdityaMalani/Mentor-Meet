@@ -11,7 +11,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
 from ..decorators import teacher_required
-from ..forms import BaseAnswerInlineFormSet, QuestionForm, TeacherSignUpForm
+from ..forms import BaseAnswerInlineFormSet, QuestionForm, TeacherSignUpForm, HeadSignUpForm
 from ..models import Answer, Question, Quiz, User
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
@@ -30,6 +30,20 @@ class TeacherSignUpView(CreateView):
         user = form.save()
         login(self.request, user)
         return redirect('teachers:quiz_change_list')
+
+class HeadSignUpView(CreateView):
+    model = User
+    form_class = HeadSignUpForm
+    template_name = 'registration/signup_form.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'head'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('teachers:headpage')
 
 
 @method_decorator([login_required, teacher_required], name='dispatch')
@@ -230,3 +244,11 @@ def reportadded(request,pk):
         model.report = uploaded_file_url
         model.save()
         return redirect('/')
+
+@login_required
+def headpage(request):
+    meets = Quiz.objects.all()
+    mycontext = {
+                    'data' : meets
+                }
+    return render(request,"headpage.html",mycontext)

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">My Meetings</li>
+    </ol>
+  </nav>
+  <h2 class="mb-3">My Meetings</h2>
+  <div class="card">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for meet in data %}
+          <tr>
+            <td class="align-middle">{{ meet.name }}</td>
+            
+            <td class="text-right">
+            {% if meet.report %}
+                <a href="/" class="btn btn-primary">Download Report</a>
+            {% endif %}
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center font-italic" colspan="5">No meetings yet</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
