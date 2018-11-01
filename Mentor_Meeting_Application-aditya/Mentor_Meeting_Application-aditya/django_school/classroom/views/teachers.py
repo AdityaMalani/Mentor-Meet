@@ -229,4 +229,6 @@ def reportadded(request,pk):
         model = Quiz.objects.get(name=pk)
         model.report = uploaded_file_url
         model.save()
-        return redirect('/')
+        return render(request, '/')
+    else
+        return render(request, '/')

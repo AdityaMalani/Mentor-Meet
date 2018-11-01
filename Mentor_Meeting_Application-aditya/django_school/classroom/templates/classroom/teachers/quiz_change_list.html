@@ -13,8 +13,8 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>Agenda</th>
-          <th>Status</th>
+          <!-- <th>Agenda</th>
+          <th>Status</th> -->
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,11 @@
             <td class="align-middle"><a href="{% url 'teachers:quiz_change' quiz.pk %}">{{ quiz.name }}</a></td>
             
             <td class="text-right">
-              <a href="/quiz/reportadd/{{quiz.name}}" class="btn btn-primary">Add Report</a>
+            {% if quiz.report %}
+            <a href="/quiz/reportadd/{{quiz.name}}" class="btn btn-primary">Change Report</a>
+            {% else %}
+            <a href="/quiz/reportadd/{{quiz.name}}" class="btn btn-primary">Add Report</a>
+            {% endif %}
             </td>
           </tr>
         {% empty %}
