@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="progress mb-3">
+    <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%"></div>
+  </div>
+  <h2 class="mb-3">{{ quiz.name }}</h2>
+  <p class="lead">{{ question.text }}</p>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <!-- {{ form|crispy }} -->
+    <div id="div_id_answer" class="form-group has-danger"> <label for="id_answer_0" class="form-control-label  requiredField">
+                 </label> <div class="">  </div> </div>
+    <button type="submit" class="btn btn-primary"><a href="{% url 'home' %}">Next →</a></button>
+  </form>
+{% endblock %}

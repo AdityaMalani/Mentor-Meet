@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'teachers:quiz_change_list' %}">My Schedule</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'teachers:quiz_change' quiz.pk %}">{{ quiz.name }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add a message</li>
+    </ol>
+  </nav>
+  <h2 class="mb-3">Add new meeting</h2>
+  <p class="lead">Write the message for schedule.</p>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div id="div_id_text" class="form-group"> <label for="id_text" class="form-control-label  requiredField">
+                Message<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="text" maxlength="255" class="textinput textInput form-control" required="" id="id_text"> </div> </div>
+    <button type="submit" class="btn btn-success"> <!-- <a href="{% url 'home' %}" > -->Save</button>
+    <a href="{% url 'teachers:quiz_change' quiz.pk %}" class="btn btn-outline-secondary" role="button">Nevermind</a>
+  </form>
+{% endblock %}

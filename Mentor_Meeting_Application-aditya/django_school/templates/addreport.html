@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<html>
+                <form action="/quiz/reportadded/{{data}}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                <input type="file" name="myfile">
+                <button type="submit">Upload</button>
+                </form>
+</html>
+{% endblock %}
