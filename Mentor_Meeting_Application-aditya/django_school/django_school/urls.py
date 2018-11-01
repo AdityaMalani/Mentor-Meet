@@ -12,6 +12,7 @@ urlpatterns = [
     path('accounts/signup/head/', teachers.HeadSignUpView.as_view(), name='head_signup'),
     path('quiz/reportadd/<str:pk>/',teachers.Addreport,name='add_report'),
     path('quiz/reportadded/<str:pk>',teachers.reportadded,name='report_added'),
+    path('downloadfile/<str:name>',teachers.downloadfile,name='downloadfile'),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h2>Sign up as a {{ user_type }}</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        <!-- {{ form|crispy }} -->
+        <div id="div_id_username" class="form-group"> <label for="id_username" class="form-control-label  requiredField">
+                Username<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="username" maxlength="150" autofocus="" class="textinput textInput form-control" required="" id="id_username"> <small id="hint_id_username" class="text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small> </div> </div>
+                <div id="div_id_password1" class="form-group"> <label for="id_password1" class="form-control-label  requiredField">
+                Password<span class="asteriskField">*</span> </label> <div class=""> <input type="password" name="password1" class="textinput textInput form-control" required="" id="id_password1"> </div> </div>
+                <div id="div_id_password2" class="form-group"> <label for="id_password2" class="form-control-label  requiredField">
+                Password confirmation<span class="asteriskField">*</span> </label> <div class=""> <input type="password" name="password2" class="textinput textInput form-control" required="" id="id_password2"> <small id="hint_id_password2" class="text-muted">Enter the same password as before, for verification.</small> </div> </div>
+                <label for="" class="form-control-label  requiredField">
+
+        <button type="submit" class="btn btn-success">Sign up</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

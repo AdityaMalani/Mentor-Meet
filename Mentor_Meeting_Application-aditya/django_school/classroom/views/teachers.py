@@ -15,6 +15,11 @@ from ..forms import BaseAnswerInlineFormSet, QuestionForm, TeacherSignUpForm, He
 from ..models import Answer, Question, Quiz, User
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
+from wsgiref.util import FileWrapper
+import mimetypes
+from django.http import HttpResponse
+import os
+from django.utils.encoding import smart_str
 
 
 class TeacherSignUpView(CreateView):
@@ -34,7 +39,7 @@ class TeacherSignUpView(CreateView):
 class HeadSignUpView(CreateView):
     model = User
     form_class = HeadSignUpForm
-    template_name = 'registration/signup_form.html'
+    template_name = 'registration/headsignupform.html'
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'head'
@@ -252,3 +257,15 @@ def headpage(request):
                     'data' : meets
                 }
     return render(request,"headpage.html",mycontext)
+
+@login_required
+def downloadfile(request,name):
+    model = Quiz.objects.get(name=name)
+    file_path = settings.MEDIA_ROOT +'/'+ model.report[7:]
+    file_wrapper = FileWrapper(open(file_path,'rb'))
+    file_mimetype = mimetypes.guess_type(file_path)
+    response = HttpResponse(file_wrapper, content_type=file_mimetype )
+    response['X-Sendfile'] = file_path
+    response['Content-Length'] = os.stat(file_path).st_size
+    response['Content-Disposition'] = 'attachment; filename=%s/' % smart_str(name) 
+    return response
